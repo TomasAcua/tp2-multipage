@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import styles from "./form.module.css";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 
 const Form = ({ onAdd }) => {
@@ -10,45 +9,52 @@ const Form = ({ onAdd }) => {
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     onAdd({ ...form, id: crypto.randomUUID() });
+
+    // Reiniciar el formulario
     setForm({
       nombre: "",
       imagen: "",
-      esMeme: "",
+      esMeme: true,
     });
   };
+
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className="space-y-4">
       <input
         name="nombre"
         placeholder="Nombre"
         value={form.nombre}
         onChange={handleChange}
         required
+        className="w-full px-4 py-2 border rounded"
       />
       <input
         name="imagen"
         placeholder="URL de Imagen"
         value={form.imagen}
-        onchange={handleChange}
+        onChange={handleChange}
         required
+        className="w-full px-4 py-2 border rounded"
       />
       <select
         name="esMeme"
-        placeholder="¿Es meme?"
         value={form.esMeme}
         onChange={handleChange}
-      />
-      <option value={true}>Sí</option>
-      <option value={false}>No</option>
-
-      <div className={styles.ButtonContainer}>
+        required
+        className="w-full px-4 py-2 border rounded"
+      >
+        <option value={true}>Sí</option>
+        <option value={false}>No</option>
+      </select>
+      <div className="text-center">
         <Button type="submit">Agregar</Button>
       </div>
     </form>
