@@ -1,5 +1,10 @@
 {
-
+    "close_form":"Close Form",
+    "add_secondary_character":"Add Secondary Character",
     "welcome_message":"welcome",
-    "404": "404 - page not found"
+    "404": "404 - page not found",
+    "made_by": "Developed by Tomas Acuña FAI-2510 and Facundo Garcia FAI-2911",
+    "home": "Home",
+    "favorites": "Favorites",
+    "footer_msg": "This is a very serious and commercial application"
 }

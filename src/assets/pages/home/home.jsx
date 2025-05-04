@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <main className="px-4 py-6 max-w-7xl mx-auto">
       {}
-      <div className="mb-6 flex items-center gap-2">
+      <div className="mb-3 flex items-center gap-2">
         <Filter
           busqueda={busqueda}
           setBusqueda={setBusqueda}
@@ -54,8 +54,8 @@ export default function Home() {
 
       <Button onClick={() => setMostrarFormulario(!mostrarFormulario)}>
         {mostrarFormulario
-          ? "Cerrar Formulario"
-          : "Agregar nuevo personaje secundario"}
+          ? t('close_form')
+          : t('add_secondary_character')}
       </Button>
 
       {mostrarFormulario && (

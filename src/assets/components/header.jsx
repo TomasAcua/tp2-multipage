@@ -16,12 +16,12 @@ export default function Header() {
       <div className="flex items-center gap-4">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold hover:text-blue-500 transition">
           <Home className="w-5 h-5" />
-          <span>{t('Inicio')}</span>
+          <span>{t('home')}</span>
         </Link>
 
         <Link to="/favoritos" className={`flex items-center gap-2 hover:text-yellow-500 transition ${location.pathname === '/favoritos' ? 'font-bold' : ''}`}>
           <Star className="w-5 h-5" />
-          <span>{t('Favoritos')}</span>
+          <span>{t('favorites')}</span>
         </Link>
       </div>
 

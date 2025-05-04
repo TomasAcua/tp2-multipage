@@ -1,5 +1,10 @@
 {
-
-    "welcome_message":"bienvenido",
-    "404": "404 - pagina no encontrada "
+    "close_form":"Cerrar Formulario",
+    "add_secondary_character":"Agregar Personaje Secundario",
+    "welcome_message":"Bienvenido",
+    "404": "404 - Pagina no encontrada ",
+    "made_by": "Desarrollado por Tomas Acuña FAI-2510 y Facundo Garcia FAI-2911",
+    "home": "Inicio",
+    "favorites": "Favoritos",
+    "footer_msg": "Esta es una aplicación muy seria y con fines comerciales"
 }
