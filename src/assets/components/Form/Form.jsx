@@ -11,13 +11,16 @@ const Form = ({ onAdd }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+
+    const parsedValue = name === "esMeme" ? value === "true" : value;
+
+    setForm({ ...form, [name]: parsedValue });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Enviar los datos a la MockAPI
+    
     fetch("https://680fd92327f2fdac240f943a.mockapi.io/api/v1/Personajes", {
       method: "POST",
       headers: {
@@ -27,13 +30,13 @@ const Form = ({ onAdd }) => {
     })
       .then((res) => res.json())
       .then((nuevoPersonaje) => {
-        onAdd(nuevoPersonaje); // Llama a la función onAdd para actualizar el estado en Home.jsx
+        onAdd(nuevoPersonaje); 
         setForm({
           nombre: "",
           origen: "",
           imagen: "",
           esMeme: true,
-        }); // Reinicia el formulario
+        }); 
       })
       .catch((err) => console.error("Error al guardar el personaje:", err));
   };

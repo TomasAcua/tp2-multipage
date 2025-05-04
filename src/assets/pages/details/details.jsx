@@ -14,6 +14,7 @@ export default function Details() {
   const [favoritos, setFavoritos] = useState(() => {
     return JSON.parse(localStorage.getItem("favoritos")) || [];
   });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // Estado para el índice del carrusel
 
   useEffect(() => {
     if (!id) return;
@@ -65,19 +66,28 @@ export default function Details() {
     }).catch((err) => console.error("Error al actualizar el personaje:", err));
   };
 
-  // Si todavía se está cargando
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
   if (!personaje && !notFound) {
     return <p className="text-center mt-10">{t("Cargando...")}</p>;
   }
 
-  // Si no se encontró el personaje
   if (notFound) {
     return (
       <section className="max-w-2xl mx-auto px-4 py-6">
         <h2 className="text-2xl font-bold mb-4">{t("Personaje no encontrado")}</h2>
         <FormMeme
           onAdd={(nuevo) => {
-            // Guardar nuevo personaje completo en la API
             fetch(`${API_URL}`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -97,21 +107,30 @@ export default function Details() {
 
   const esFavorito = favoritos.includes(personaje.id);
 
-  // Verifica si el personaje ya tiene detalles
-  const tieneDetalles =
-    personaje.descripcion &&
-    personaje.numeroDeEpisodios &&
-    personaje.datosCuriosos &&
-    personaje.memes?.length > 0;
+  const images = [personaje.imagen, ...(personaje.memes || [])];
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-6">
       <div className="flex flex-col md:flex-row gap-6">
-        <img
-          src={personaje.imagen}
-          alt={personaje.nombre}
-          className="w-full md:w-1/2 rounded shadow"
-        />
+        <div className="relative w-full md:w-1/2">
+          <img
+            src={images[currentImageIndex]}
+            alt={`Imagen ${currentImageIndex + 1}`}
+            className="w-full h-80 object-cover rounded shadow"
+          />
+          <button
+            onClick={handlePrevImage}
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+          >
+            &#8249;
+          </button>
+          <button
+            onClick={handleNextImage}
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+          >
+            &#8250;
+          </button>
+        </div>
 
         <div className="flex-1 space-y-4">
           <div className="flex justify-between items-start">
@@ -140,29 +159,6 @@ export default function Details() {
           <div>
             <strong>{t("Dato curioso")}:</strong> {personaje.datosCuriosos}
           </div>
-
-          {personaje.memes?.length > 0 && (
-            <div>
-              <strong>{t("Memes populares")}:</strong>
-              <ul className="list-disc list-inside mt-2">
-                {personaje.memes.map((meme, i) => (
-                  <li key={i}>{meme}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Mostrar el formulario solo si no tiene detalles */}
-          {!tieneDetalles ? (
-            <div className="mt-6">
-              <h3 className="text-xl font-bold">{t("Agregar información")}</h3>
-              <FormMeme onAdd={handleAddMeme} />
-            </div>
-          ) : (
-            <p className="text-center text-gray-500 mt-6">
-              {t("Este personaje ya tiene detalles completos.")}
-            </p>
-          )}
         </div>
       </div>
     </section>

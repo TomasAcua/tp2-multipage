@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <main className="px-4 py-6 max-w-7xl mx-auto">
-      {/*  COMPONENTE ¿?: <SearchBar value={busqueda} onChange={...} /> */}
+      {}
       <div className="mb-6 flex items-center gap-2">
         <Filter
           busqueda={busqueda}
@@ -55,15 +55,14 @@ export default function Home() {
       <Button onClick={() => setMostrarFormulario(!mostrarFormulario)}>
         {mostrarFormulario
           ? "Cerrar Formulario"
-          : "Agregar nuevo personaje secundaru"}
+          : "Agregar nuevo personaje secundario"}
       </Button>
 
       {mostrarFormulario && (
         <Form
           onAdd={(nuevoPersonaje) => {
-            // Agrega el nuevo personaje al estado
             setPersonajes([...personajes, nuevoPersonaje]);
-            setMostrarFormulario(false); // Oculta el formulario después de agregar
+            setMostrarFormulario(false); 
           }}
         />
       )}
@@ -73,10 +72,8 @@ export default function Home() {
           {t("No se encontraron personajes")}
         </p>
       ) : (
-        //  COMPONENTE ¿?: <CharacterList personajes={filtrados} />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filtrados.map((personaje) => (
-            //  COMPONENTE ¿?: <CharacterCard personaje={personaje} onClick={...} />
             <div
               key={personaje.id}
               className="relative cursor-pointer group rounded overflow-hidden shadow-lg border hover:scale-105 transition"
@@ -87,7 +84,6 @@ export default function Home() {
                 alt={personaje.nombre}
                 className="w-full h-60 object-cover"
               />
-              {/*  COMPONENTE¿?: <CharacterCardOverlay nombre={...} origen={...} /> */}
               <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white text-center p-4">
                 <h3 className="text-lg font-semibold">{personaje.nombre}</h3>
                 <p className="text-sm">{personaje.origen}</p>
