@@ -2,7 +2,7 @@ import { Github, Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
-  const { t, i18n } = useTranslation();
+  const {t} = useTranslation();
   return (
     <footer className="bg-gray-900 text-white p-6 text-center mt-10">
       <div className="flex justify-center gap-6 mb-2">

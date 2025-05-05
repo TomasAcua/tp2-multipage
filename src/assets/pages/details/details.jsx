@@ -35,7 +35,7 @@ export default function Details() {
         }
       })
       .catch((err) => {
-        console.error("Error al cargar detalles:", err);
+        console.error(t('error_load'), err);
         setNotFound(true);
       });
   }, [id]);
@@ -63,7 +63,7 @@ export default function Details() {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(nuevoPersonaje),
-    }).catch((err) => console.error("Error al actualizar el personaje:", err));
+    }).catch((err) => console.error(t('update_error'), err));
   };
 
   const handleNextImage = () => {
@@ -79,7 +79,7 @@ export default function Details() {
   };
 
   if (!personaje && !notFound) {
-    return <p className="text-center mt-10">{t("Cargando...")}</p>;
+    return <p className="text-center mt-10">{t('loading')}</p>;
   }
 
   if (notFound) {
@@ -98,7 +98,7 @@ export default function Details() {
                 setPersonaje(data);
                 setNotFound(false);
               })
-              .catch((err) => console.error("Error al crear personaje:", err));
+              .catch((err) => console.error(t('create_error'), err));
           }}
         />
       </section>
@@ -141,7 +141,7 @@ export default function Details() {
                 esFavorito ? "text-yellow-500" : "text-gray-400"
               } hover:scale-110`}
               title={
-                esFavorito ? t("Quitar de favoritos") : t("Agregar a favoritos")
+                esFavorito ? t("remove_favorite") : t("add_favorite")
               }
             >
               <Star fill={esFavorito ? "currentColor" : "none"} />
@@ -152,12 +152,12 @@ export default function Details() {
           <p>{personaje.descripcion}</p>
 
           <div>
-            <strong>{t("Número de episodios")}:</strong>{" "}
+            <strong>{t('episodes')}:</strong>{" "}
             {personaje.numeroDeEpisodios}
           </div>
 
           <div>
-            <strong>{t("Dato curioso")}:</strong> {personaje.datosCuriosos}
+            <strong>{t('fun_fact')}:</strong> {personaje.datosCuriosos}
           </div>
         </div>
       </div>

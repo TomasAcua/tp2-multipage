@@ -18,7 +18,7 @@ export default function Favoritos() {
       fetch(API_URL)
         .then(res => res.json())
         .then(data => setPersonajes(data))
-        .catch(err => console.error('Error cargando personajes:', err));
+        .catch(err => console.error(t('load_error'), err));
     };
 
     cargarDatos();
@@ -41,10 +41,10 @@ export default function Favoritos() {
 
   return (
     <main className="px-4 py-6 max-w-7xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">{t('Mis Favoritos')}</h1>
+      <h1 className="text-2xl font-bold mb-6">{t('my_favorites')}</h1>
 
       {favoritosCompletos.length === 0 ? (
-        <p className="text-gray-500 text-center">{t('Aún no agregaste personajes a favoritos.')}</p>
+        <p className="text-gray-500 text-center">{t('empty_favorites')}</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {favoritosCompletos.map(personaje => (

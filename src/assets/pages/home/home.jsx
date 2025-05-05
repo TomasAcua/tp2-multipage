@@ -21,7 +21,7 @@ export default function Home() {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setPersonajes(data))
-      .catch((err) => console.error("Error cargando personajes:", err));
+      .catch((err) => console.error(t('load_error'), err));
   }, []);
 
   const filtrados = personajes.filter((p) => {
@@ -69,7 +69,7 @@ export default function Home() {
 
       {filtrados.length === 0 ? (
         <p className="text-center text-gray-500">
-          {t("No se encontraron personajes")}
+          {t('characters_empty')}
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
