@@ -21,7 +21,7 @@ export default function Home() {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setPersonajes(data))
-      .catch((err) => console.error(t('load_error'), err));
+      .catch((err) => console.error(t("load_error"), err));
   }, []);
 
   const filtrados = personajes.filter((p) => {
@@ -41,6 +41,11 @@ export default function Home() {
   return (
     <main className="px-4 py-6 max-w-7xl mx-auto">
       {}
+      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+          {t("title")}
+        </span>
+      </h1>
       <div className="mb-3 flex items-center gap-2">
         <Filter
           busqueda={busqueda}
@@ -53,24 +58,20 @@ export default function Home() {
       </div>
 
       <Button onClick={() => setMostrarFormulario(!mostrarFormulario)}>
-        {mostrarFormulario
-          ? t('close_form')
-          : t('add_secondary_character')}
+        {mostrarFormulario ? t("close_form") : t("add_secondary_character")}
       </Button>
 
       {mostrarFormulario && (
         <Form
           onAdd={(nuevoPersonaje) => {
             setPersonajes([...personajes, nuevoPersonaje]);
-            setMostrarFormulario(false); 
+            setMostrarFormulario(false);
           }}
         />
       )}
 
       {filtrados.length === 0 ? (
-        <p className="text-center text-gray-500">
-          {t('characters_empty')}
-        </p>
+        <p className="text-center text-gray-500">{t("characters_empty")}</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filtrados.map((personaje) => (
@@ -82,7 +83,7 @@ export default function Home() {
               <img
                 src={personaje.imagen}
                 alt={personaje.nombre}
-                className="w-full h-60 object-cover"
+                className="w-full h-60 object-contain object-center"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white text-center p-4">
                 <h3 className="text-lg font-semibold">{personaje.nombre}</h3>

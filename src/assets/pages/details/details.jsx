@@ -116,7 +116,7 @@ export default function Details() {
           <img
             src={images[currentImageIndex]}
             alt={`Imagen ${currentImageIndex + 1}`}
-            className="w-full h-80 object-cover rounded shadow"
+            className="w-full h-80 object-contain object-center rounded shadow"
           />
           <button
             onClick={handlePrevImage}

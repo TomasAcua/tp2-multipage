@@ -7,12 +7,14 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  @apply min-h-screen bg-white [background:radial-gradient(125%_125%_at_50%_10%,#19535F_40%,#B6FF5C_100%)];
 }
 
 a {
