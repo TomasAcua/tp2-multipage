@@ -8,8 +8,8 @@ Aplicación desarrollada como trabajo práctico para la materia **Programación 
 
 | Nombre                  | Legajo     | GitHub                          |
 |-------------------------|------------|----------------------------------|
-| Tomás Acuña             | 2510    | [@tomasacuna](https://github.com/tomasacuna) |
-| Facundo Garcia          | 2911     | [@FacundoGarcia](https://github.com)  |
+| Tomás Acuña             | 2510    | [@tomasacuna](https://github.com/TomasAcua) |
+| Facundo Garcia          | 2911     | [@FacundoGarcia](https://github.com/FacuGarcia05)  |
 
 ---
 
