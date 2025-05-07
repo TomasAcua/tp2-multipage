@@ -1,12 +1,47 @@
-# React + Vite
+# 🌟 Personajes Secundarios Famosos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación desarrollada como trabajo práctico para la materia **Programación Web Avanzada**. Consiste en una SPA realizada con **React**, **Tailwind CSS**, **React Router DOM**, **i18next**, e integra datos desde una **MockAPI**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👥 Integrantes del Grupo
 
-## Expanding the ESLint configuration
+| Nombre                  | Legajo     | GitHub                          |
+|-------------------------|------------|----------------------------------|
+| Tomás Acuña             | 2510    | [@tomasacuna](https://github.com/tomasacuna) |
+| Facundo Garcia          | 2911     | [@FacundoGarcia](https://github.com)  |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧾 Descripción del Proyecto
+
+La app permite explorar una galería de personajes secundarios famosos de películas, series y videojuegos. El usuario puede:
+
+- Ver los personajes en la página principal.
+- Buscar por nombre u origen.
+- Acceder a una página de detalles con información extendida.
+- Marcar como favoritos.
+- Visualizar su lista de personajes favoritos.
+- Cambiar el idioma entre español e inglés.
+
+---
+
+## ⚙️ Tecnologías Usadas
+
+- React
+- Tailwind CSS
+- React Router DOM
+- React i18next
+- MockAPI
+- Lucide Icons
+
+---
+
+## 🚀 Instrucciones de Instalación
+
+
+```bash
+git clone https://github.com/usuario/personajes-secundarios.git
+cd personajes-secundarios
+npm install
+npm run dev
